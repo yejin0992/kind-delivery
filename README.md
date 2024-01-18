@@ -1,6 +1,7 @@
 
 #### ✔️ 프로젝트 소개
 프로젝트명 : kind-delivery (배달어플)
+
 기간 : 2024.01.16 ~ (진행중)
 
 ----
@@ -50,5 +51,10 @@
 - 결제하기(취소하기)
 ----
 
+#### ✔️ REST API 설계
+음식조회 /findFood/{key} -> GET
+음식등록/saveFood -> POST
+
+----
 #### ✔️ ERD
 ![스크린샷 2024-01-18 102526](https://github.com/yejin0992/kind-delivery/assets/128785412/013807d9-0766-45c8-aeef-f18213367d8a)
