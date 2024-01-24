@@ -1,41 +1,39 @@
 package a_kind_delivery.domain.food;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Map;
-
-import static com.fasterxml.jackson.databind.type.LogicalType.Map;
+import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
+@Transactional
+@RequiredArgsConstructor
 public class FoodService {
 
-    @Autowired
-    private FoodRepository foodRepository;
+    private final FoodJpaRepository jpaRepository;
+    //private FoodRepository foodRepository;
 
     //음식 찾기
-    public Food findFood(int key){
-        return foodRepository.findFood(key);
+    public Food findFood(String id){
+        return jpaRepository.getById(id);
     }
 
-    //음식 저장
+
+    //음식 저장 및 수정
     public void saveFood(Food food){
-        foodRepository.saveFood(food);
+        jpaRepository.save(food);
     }
 
     //음식 전체 조회
-    public java.util.Map<Integer, Food> findAllFood(){
-        return foodRepository.findAllFood();
+    public List<Food> findAllFood(){
+        return jpaRepository.findAll();
     }
 
-    //음식 개별 수정
-    public Food updateFood(int key, Food food){
-        return foodRepository.updateFood(key, food);
-    }
 
     //음식 개별 삭제
-    public void deleteFood(int key){
-        foodRepository.deleteFood(key);
+    public void deleteFood(String id){
+        jpaRepository.deleteById(id);
     }
 }
