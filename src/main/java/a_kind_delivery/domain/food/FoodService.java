@@ -1,10 +1,10 @@
 package a_kind_delivery.domain.food;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,19 +16,26 @@ public class FoodService {
     //private FoodRepository foodRepository;
 
     //음식 찾기
-    public Food findFood(String id){
-        return jpaRepository.getById(id);
+    public FoodDTO findFood(String id){
+        Food foodEntity = jpaRepository.getById(id);
+        return foodEntity.toFoodDTO();
     }
 
 
     //음식 저장 및 수정
-    public void saveFood(Food food){
-        jpaRepository.save(food);
+    public void saveFood(FoodDTO food){
+        jpaRepository.save(food.toFoodEntity());
     }
 
     //음식 전체 조회
-    public List<Food> findAllFood(){
-        return jpaRepository.findAll();
+    public List<FoodDTO> findAllFood(){
+        List<Food> foodList =  jpaRepository.findAll();
+        //FoodEntity List -> FoodDTO List
+        List<FoodDTO> foodDtoList = new ArrayList<>();
+        for(Food food : foodList){
+            foodDtoList.add(food.toFoodDTO());
+        }
+        return foodDtoList;
     }
 
 
