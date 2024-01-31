@@ -1,41 +1,46 @@
 package a_kind_delivery.domain.food;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.Map;
-
-import static com.fasterxml.jackson.databind.type.LogicalType.Map;
+import java.util.List;
 
 @Service
+@Transactional
+@RequiredArgsConstructor
 public class FoodService {
 
-    @Autowired
-    private FoodRepository foodRepository;
+    private final FoodJpaRepository jpaRepository;
+    //private FoodRepository foodRepository;
 
     //음식 찾기
-    public Food findFood(int key){
-        return foodRepository.findFood(key);
+    public FoodDTO findFood(String id){
+        Food foodEntity = jpaRepository.getById(id);
+        return foodEntity.toFoodDTO();
     }
 
-    //음식 저장
-    public void saveFood(Food food){
-        foodRepository.saveFood(food);
+
+    //음식 저장 및 수정
+    public void saveFood(FoodDTO food){
+        jpaRepository.save(food.toFoodEntity());
     }
 
     //음식 전체 조회
-    public java.util.Map<Integer, Food> findAllFood(){
-        return foodRepository.findAllFood();
+    public List<FoodDTO> findAllFood(){
+        List<Food> foodList =  jpaRepository.findAll();
+        //FoodEntity List -> FoodDTO List
+        List<FoodDTO> foodDtoList = new ArrayList<>();
+        for(Food food : foodList){
+            foodDtoList.add(food.toFoodDTO());
+        }
+        return foodDtoList;
     }
 
-    //음식 개별 수정
-    public Food updateFood(int key, Food food){
-        return foodRepository.updateFood(key, food);
-    }
 
     //음식 개별 삭제
-    public void deleteFood(int key){
-        foodRepository.deleteFood(key);
+    public void deleteFood(String id){
+        jpaRepository.deleteById(id);
     }
 }

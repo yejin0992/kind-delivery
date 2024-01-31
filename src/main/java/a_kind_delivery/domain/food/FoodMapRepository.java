@@ -2,12 +2,11 @@ package a_kind_delivery.domain.food;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 @Repository
-public class FoodRepository {
+public class FoodMapRepository {
 
     private int id = 1;
     private Map<Integer,Food> db = new HashMap<>();
