@@ -16,26 +16,26 @@ public class FoodController {
 
     // 음식 찾기
     // 데이터는 정확히 찾아지지만, 출력 시 500 에러 ==> DTO로 복사하여 출력하였더니 에러해결!
-    @RequestMapping(value = "/findFood/{id}", method= RequestMethod.GET)
+    @GetMapping(value = "/food/{id}")
     public FoodDTO findFoodById(@PathVariable("id") String id){
         return foodService.findFood(id);
     }
 
     // 음식 저장 및 수정
-    @RequestMapping(value="/saveFood", method= RequestMethod.POST)
+    @PostMapping(value="/food")
     public void insertFood(@RequestBody FoodDTO food) {
         foodService.saveFood(food);
     }
 
     // 음식 전체 조회
-    @RequestMapping(value = "/findAllFood", method=RequestMethod.GET)
+    @GetMapping(value = "/foods")
     public List<FoodDTO> findAllFood(){
         return foodService.findAllFood();
     }
 
 
     // 음식 개별 삭제
-    @RequestMapping(value="/deleteFood/{id}", method= RequestMethod.DELETE)
+    @DeleteMapping(value="/food/{id}")
     public void deleteFood(@PathVariable("id") String id){
         foodService.deleteFood(id);
     }
