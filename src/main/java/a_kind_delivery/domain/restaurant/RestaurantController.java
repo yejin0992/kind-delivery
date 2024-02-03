@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class RestaurantController {
@@ -20,5 +22,10 @@ private final RestaurantService restaurantService;
     @PostMapping(value="/restaurant")
     public void saveRestaurant(@RequestBody RestaurantDTO restaurant){
         restaurantService.saveRestaurant(restaurant);
+    }
+
+    @GetMapping(value="restaurants")
+    public List<RestaurantDTO> findAllRestaurant(){
+        return  restaurantService.findAllRestaurant();
     }
 }
