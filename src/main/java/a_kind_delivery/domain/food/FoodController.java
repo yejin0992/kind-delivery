@@ -23,7 +23,6 @@ public class FoodController {
     // 음식 저장 및 수정
     @PostMapping(value = "/food")
     public void insertFood(@RequestBody FoodDTO food) {
-        System.out.println("푸드 컨트롤러 도착");
         foodService.saveFood(food);
     }
 

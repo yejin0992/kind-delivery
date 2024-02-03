@@ -25,7 +25,6 @@ public class FoodService {
     //음식 저장 및 수정
     @Transactional
     public void saveFood(FoodDTO food) {
-        System.out.println("푸드 서비스 도착");
         jpaRepository.save(food.toFoodEntity());
     }
 

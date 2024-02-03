@@ -8,9 +8,12 @@ import org.springframework.stereotype.Service;
 public class RestaurantService {
 
     private final RestaurantRepository restaurantRepository;
-    public RestaurantDTO findFoodByName(Integer id) {
+    public RestaurantDTO findResByName(Integer id) {
         Restaurant restaurantEntity = restaurantRepository.getById(id);
         return restaurantEntity.toRestaurantDTO();
     }
 
+    public void saveRestaurant(RestaurantDTO restaurantDTO){
+        restaurantRepository.save(restaurantDTO.toRestaurantEntity());
+    }
 }
