@@ -12,7 +12,6 @@ public class RestaurantController {
 
 private final RestaurantService restaurantService;
 
-// 음식점 이름으로 음식 검색
 
     @GetMapping(value="/restaurant/{id}")
     public RestaurantDTO findResByName(@PathVariable("id") Integer id){
@@ -24,8 +23,13 @@ private final RestaurantService restaurantService;
         restaurantService.saveRestaurant(restaurant);
     }
 
-    @GetMapping(value="restaurants")
+    @GetMapping(value="/restaurants")
     public List<RestaurantDTO> findAllRestaurant(){
         return  restaurantService.findAllRestaurant();
+    }
+
+    @DeleteMapping(value="/restaurant/{id}")
+    public void deleteRestaurant(@PathVariable("id") Integer id){
+        restaurantService.deleteRestaurant(id);
     }
 }

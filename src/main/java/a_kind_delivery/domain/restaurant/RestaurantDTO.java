@@ -3,12 +3,12 @@ package a_kind_delivery.domain.restaurant;
 import a_kind_delivery.domain.food.Food;
 import a_kind_delivery.domain.review.Review;
 import a_kind_delivery.domain.user.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,15 +16,16 @@ import java.util.List;
 @NoArgsConstructor
 public class RestaurantDTO {
 
+    @NotBlank
     private int id;
+    @NotBlank
     private String name;
-    @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    @Null
     private User user;
+    @NotBlank
     private String address;
     private String description;
-    @JsonIgnore
     private List<Food> food = new ArrayList<>();
-    @JsonIgnore
     private List<Review> reviews = new ArrayList<>();
 
     @Builder

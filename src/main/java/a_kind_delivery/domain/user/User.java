@@ -3,6 +3,7 @@ package a_kind_delivery.domain.user;
 import a_kind_delivery.domain.order.Orders;
 import a_kind_delivery.domain.restaurant.Restaurant;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,8 +15,10 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class User {
+
+
     @Id
-    @Column(name="user_id")
+    @Column(name = "user_id")
     private String id;
 
     private String pw;
@@ -26,12 +29,21 @@ public class User {
 
     private String address;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Restaurant> restaurants = new ArrayList<>();
 
-    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Orders> orders = new ArrayList<>();
+
+    @Builder
+    public User(String id, String pw, String name, String phone, String address, List<Restaurant> restaurants, List<Orders> orders) {
+        this.id = id;
+        this.pw = pw;
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.restaurants = restaurants;
+        this.orders = orders;
+    }
 
 }

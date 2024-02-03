@@ -3,8 +3,6 @@ package a_kind_delivery.domain.restaurant;
 import a_kind_delivery.domain.food.Food;
 import a_kind_delivery.domain.review.Review;
 import a_kind_delivery.domain.user.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jdk.jshell.Snippet;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,11 +30,9 @@ public class Restaurant {
 
     private String description;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "restaurant")
     private List<Food> food = new ArrayList<>();
 
-    @JsonIgnore
     @OneToMany(mappedBy = "restaurant")
     private List<Review> reviews = new ArrayList<>();
 
