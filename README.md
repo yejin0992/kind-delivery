@@ -11,51 +11,83 @@
 - 로그인
 - 회원정보 조회
 - 회원정보 수정
-- 아이디/비밀번호 찾기
-- 회원탈퇴
-- 찜 목록 조회
-- 리뷰 모아보기
 
-**2. 주소(Address)**
-- 주소지 관리(등록, 추가, 수정, 삭제)
-
-**3. 음식(Food)**
+**2. 음식(Food)**
 - 음식(등록, 수정, 삭제)
-- 메뉴 장바구니에 추가
 - 음식 조회하기
-- 음식 주문하기
-- 음식 결제하기
 
-**4. 식당(Restaurant)**
+**3. 식당(Restaurant)**
 - 식당(등록, 수정, 삭제)
-- 식당 찜하기
-- 리뷰 (등록, 수정, 삭제)
-- 찜(등록, 수정, 삭제)
-- 별점 (등록, 수정, 삭제)
-- 카테고리별로 보기
-- 별점 순으로 식당 추천받기
-- 식당 검색하기
 
-**5. 장바구니(Cart)**
+**4. 장바구니(Cart)**
 - 음식 장바구니에 추가, 수정, 삭제
 - 장바구니 확인
 
-**6. 주문(Order)**
+**5. 주문(Order)**
 - 주문하기(취소하기)
 - 주문내역 확인
 
-**7. 배달(Delivery)**
-- 배달 정보 확인
-
-**8. 결제(Payment)**
-- 결제하기(취소하기)
 ----
 
 #### ✔️ REST API 설계
-음식조회 /findFood/{key} -> GET
+<table>
+  <tr>
+    <th>기능</th>
+    <th>Method</th>
+    <th>URL</th>
+  </tr>
 
-음식등록/saveFood -> POST
+  <tr>
+    <td>음식조회</td>
+    <td>GET</td>
+    <td>/food/{id}</td>
+  </tr>
+
+    <tr>
+    <td>음식 저장 및 수정</td>
+    <td>POST</td>
+    <td>/food/</td>
+  </tr>
+
+    <tr>
+    <td>음식전체 조회</td>
+    <td>GET</td>
+    <td>/foods</td>
+  </tr>
+
+    <tr>
+    <td>음식 개별 삭제</td>
+    <td>DELETE</td>
+    <td>/food/{id}</td>
+  </tr>
+
+    <tr>
+    <td>음식점 찾기</td>
+    <td>GET</td>
+    <td>/restaurant/{id}</td>
+  </tr>
+
+  <tr>
+    <td>음식점 저장</td>
+    <td>POST</td>
+    <td>/restaurant/</td>
+  </tr>
+
+  <tr>
+    <td>모든 음식점 찾기</td>
+    <td>GET</td>
+    <td>/restaurants</td>
+  </tr>
+
+  <tr>
+    <td>음식점 삭제</td>
+    <td>DELETE</td>
+    <td>/restaurant/{id}</td>
+  </tr>
+  
+</table>
 
 ----
 #### ✔️ ERD
-![스크린샷 2024-01-18 102526](https://github.com/yejin0992/kind-delivery/assets/128785412/013807d9-0766-45c8-aeef-f18213367d8a)
+![ERD](https://github.com/yejin0992/kind-delivery/assets/128785412/76f08916-8933-4b1b-9b17-3553e0fb885e)
+
