@@ -38,31 +38,31 @@
   </tr>
 
   <tr>
-    <td>음식조회</td>
+    <td>음식 조회</td>
     <td>GET</td>
     <td>/food/{id}</td>
   </tr>
 
-    <tr>
-    <td>음식 저장 및 수정</td>
+  <tr>
+    <td>음식 저장</td>
     <td>POST</td>
     <td>/food/</td>
   </tr>
 
-    <tr>
-    <td>음식전체 조회</td>
+  <tr>
+    <td>모든 음식 조회</td>
     <td>GET</td>
     <td>/foods</td>
   </tr>
 
-    <tr>
-    <td>음식 개별 삭제</td>
+  <tr>
+    <td>음식 삭제</td>
     <td>DELETE</td>
     <td>/food/{id}</td>
   </tr>
 
-    <tr>
-    <td>음식점 찾기</td>
+  <tr>
+    <td>음식점 조회</td>
     <td>GET</td>
     <td>/restaurant/{id}</td>
   </tr>
@@ -74,7 +74,7 @@
   </tr>
 
   <tr>
-    <td>모든 음식점 찾기</td>
+    <td>모든 음식점 조회</td>
     <td>GET</td>
     <td>/restaurants</td>
   </tr>
@@ -84,7 +84,6 @@
     <td>DELETE</td>
     <td>/restaurant/{id}</td>
   </tr>
-  
 </table>
 
 ----
