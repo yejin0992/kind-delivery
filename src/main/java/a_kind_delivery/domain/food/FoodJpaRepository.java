@@ -6,11 +6,11 @@ import java.util.List;
 
 // JpaRepository는 @NoRepositoryBean 상속받고 있음
 // 빈으로 직접 등록되지 않지만 SpringDataJPA가 직접 구현하여 bean 생성함
-public interface FoodJpaRepository extends JpaRepository<Food, String> {
+public interface FoodJpaRepository extends JpaRepository<Food, Integer> {
 
     //음식 찾기
     @Override
-    Food getById(String id);
+    Food getById(Integer id);
 
     // 음식 저장 및 수정
     @Override
@@ -22,7 +22,7 @@ public interface FoodJpaRepository extends JpaRepository<Food, String> {
 
     // 음식 개별 삭제
     @Override
-    void deleteById(String id);
+    void deleteById(Integer id);
 }
 
 

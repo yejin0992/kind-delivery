@@ -15,8 +15,8 @@ public class FoodService {
     private final FoodJpaRepository jpaRepository;
 
     //음식 찾기
-    @Transactional(readOnly=true)
-    public FoodDTO findFood(String id){
+    @Transactional(readOnly = true)
+    public FoodDTO findFood(Integer id) {
         Food foodEntity = jpaRepository.getById(id);
         return foodEntity.toFoodDTO();
     }
@@ -24,17 +24,17 @@ public class FoodService {
 
     //음식 저장 및 수정
     @Transactional
-    public void saveFood(FoodDTO food){
+    public void saveFood(FoodDTO food) {
         jpaRepository.save(food.toFoodEntity());
     }
 
     //음식 전체 조회
-    @Transactional(readOnly=true)
-    public List<FoodDTO> findAllFood(){
-        List<Food> foodList =  jpaRepository.findAll();
+    @Transactional(readOnly = true)
+    public List<FoodDTO> findAllFood() {
+        List<Food> foodList = jpaRepository.findAll();
         //FoodEntity List -> FoodDTO List
         List<FoodDTO> foodDtoList = new ArrayList<>();
-        for(Food food : foodList){
+        for (Food food : foodList) {
             foodDtoList.add(food.toFoodDTO());
         }
         return foodDtoList;
@@ -42,7 +42,7 @@ public class FoodService {
 
     //음식 개별 삭제
     @Transactional
-    public void deleteFood(String id){
+    public void deleteFood(Integer id) {
         jpaRepository.deleteById(id);
     }
 }
