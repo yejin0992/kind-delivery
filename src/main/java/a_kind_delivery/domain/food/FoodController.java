@@ -1,5 +1,6 @@
 package a_kind_delivery.domain.food;
 
+import a_kind_delivery.domain.Exception.MyException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,9 @@ public class FoodController {
     // 데이터는 정확히 찾아지지만, 출력 시 500 에러 ==> DTO로 복사하여 출력하였더니 에러해결!
     @GetMapping(value = "/food/{id}")
     public FoodDTO findFoodById(@PathVariable("id") Integer id) {
+        if(id<0){
+            throw new MyException("음수는 입력할 수 없습니다.");
+        }
         return foodService.findFood(id);
     }
 
@@ -36,6 +40,9 @@ public class FoodController {
     // 음식 개별 삭제
     @DeleteMapping(value = "/food/{id}")
     public void deleteFood(@PathVariable("id") Integer id) {
+        if(id<0){
+            throw new MyException("음수는 입력할 수 없습니다.");
+        }
         foodService.deleteFood(id);
     }
 }
